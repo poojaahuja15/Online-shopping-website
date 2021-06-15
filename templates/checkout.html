@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <title>Pooja's Shopping Mart</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-sixteen.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+</head>
+
+<body>
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <h2>Pooja's <em>Shopping Mart</em></h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products">Our Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/checkout">Checkout<span class="sr-only">(current)</span><a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tracker">Tracker</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="page-heading products-heading header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-content">
+                        <h4>Checkout</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col my-4">
+            <h2>Step 1 - Review Your Cart Items </h2>
+            <div class="mt-4">
+                <ul class="list-group" id="items">
+                </ul>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-3">
+                        <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs.<span id="totalPrice"></b> </span></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="col my-4">
+            <h2>Step 2 - Enter Your Details </h2>
+            <form method="post" action="/checkout/" class="col my-4">
+                {% csrf_token %}
+                <input type="hidden" name="itemsJson" id="itemsJson">
+                <input type="hidden" name="amount" id="amount">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                    <label>Address 2</label>
+                    <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>City</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>State</label>
+                        <input type="text" class="form-control" id="state" name="state" placeholder="Enter state">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Zip</label>
+                        <input type="text" class="form-control" id="zip_code" name="zip_code">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number">
+                </div>
+                <button type="submit" style="margin:auto; display:block;" class="btn btn-dark">Place Order</button>
+            </form>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="inner-content">
+                            <p>All rights are reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Additional Scripts -->
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+        <script src="{% static 'assets/js/owl.js' %}"></script>
+        <script src="{% static 'assets/js/slick.js' %}"></script>
+        <script src="{% static 'assets/js/isotope.js' %}"></script>
+        <script src="{% static 'assets/js/accordions.js' %}"></script>
+        <script language="text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t) { //declaring the array outside of the
+            if (!cleared[t.id]) { // function makes it static and global
+                cleared[t.id] = 1; // you could use true and false, but that's more typing
+                t.value = ''; // with more chance of typos
+                t.style.color = '#fff';
+            }
+        }
+        </script>
+        <script>
+        if (localStorage.getItem('cart') == null) {
+            var cart = {};
+        } else {
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+        console.log(cart);
+        var sum = 0;
+        var totalPrice = 0;
+        if ($.isEmptyObject(cart)) {
+            mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+            $('#items').append(mystr);
+        } else {
+            for (item in cart) {
+                let name = cart[item][1];
+                let qty = cart[item][0];
+                let itemPrice = cart[item][2];
+
+                sum = sum + qty;
+                totalPrice = totalPrice + qty * itemPrice
+                mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${name}
+                    <span class="badge badge-primary badge-pill">${qty}</span>
+                </li>`
+                $('#items').append(mystr);
+            }
+        }
+        document.getElementById('totalPrice').innerHTML = totalPrice;
+        $('#itemsJson').val(JSON.stringify(cart)); { % if thank % }
+        alert('Thanks for ordering. Your order id is {{id}}. Use it to track your order');
+        localStorage.clear();
+        document.location = "/"; { % endif % }
+        $('#amount').val($('#totalPrice').html())
+        </script>
+</body>
+
+</html>
